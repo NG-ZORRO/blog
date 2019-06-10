@@ -5,13 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import Image from 'gatsby-image'
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from '../utils/typography'
 
-function Bio() {
+function Bio(props) {
+  const { isMember, au } = props
+
   return (
     <StaticQuery
       query={bioQuery}
@@ -38,11 +40,13 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
+              {au
+                ? isMember
+                  ? `Written by NG-ZORRO team member ${author}.`
+                  : `Written by ${author}.`
+                : 'You are reading blogs published on NG-ZORRO Blog.'}{' '}
               <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
+                Follow us on Twitter
               </a>
             </p>
           </div>

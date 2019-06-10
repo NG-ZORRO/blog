@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
+    title: `Blog of NG-ZORRO Team`,
+    author: `NG-ZORRO and Friends`,
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://ng.ant.design/blog`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `NG_ZORRO`,
     },
   },
   plugins: [

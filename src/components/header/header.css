@@ -1,0 +1,58 @@
+#header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  max-width: 100%;
+  box-shadow: var(--box-shadow);
+  background-color: var(--background-color);
+  transition: all 0.5s ease;
+}
+
+#header a#logo {
+  overflow: hidden;
+  padding-left: 40px;
+  float: left;
+  height: 64px;
+  line-height: 64px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+#header a#logo img#logo {
+  vertical-align: middle;
+  height: 32px;
+  margin: 0 16px 0;
+}
+
+#header a#logo span#name {
+  vertical-align: middle;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+#header #dark-switch {
+  float: right;
+  margin-top: 20px;
+  margin-left: 16px;
+  margin-right: 40px;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+body {
+  padding-top: 64px;
+}
+
+@media only screen and (max-width: 767.99px) {
+  #header {
+    text-align: center;
+  }
+
+  #header a#logo {
+    float: initial;
+  }
+}

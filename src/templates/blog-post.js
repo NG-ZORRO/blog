@@ -1,10 +1,10 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { graphql, Link } from 'gatsby'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import Bio from '../components/bio'
+import Layout from '../components/layout/layout'
+import SEO from '../components/seo'
+import { rhythm, scale } from '../utils/typography'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -24,17 +24,22 @@ class BlogPostTemplate extends React.Component {
             ...scale(-1 / 5),
             display: `block`,
             marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
+            marginTop: rhythm(-0.5),
           }}
         >
           {post.frontmatter.date}
         </p>
+
+        <hr />
+        {/* Content rendered as HTML> */}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
+            marginTop: rhythm(1),
             marginBottom: rhythm(1),
           }}
         />
+
         <Bio />
 
         <ul
@@ -78,12 +83,16 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(pruneLength: 160) # A trunc of article.
       html
+      timeToRead
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+      fields {
+        slug
       }
     }
   }
