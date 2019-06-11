@@ -10,20 +10,21 @@ NG-ZORRO
 
 ## Write
 
-- create a dir under `content/blog/`.
-- create an `index.md` file which would be considered as the main content.
-- all static resources can be put into the same dir.
-- Use metadata like `description` for SEO, use `tag` and `category` to group articles.
+Follow these steps to write a new article:
 
-### Post metadata
+- Create a dir under `content/blog/`.
+- Create an `index.md` file which would be considered as the main content.
+  - All static resources can be put into the same dir.
+  - (Optional) Create translations with name patterns like `index.{languageId}.md`.
 
-- author
+### Metadata
 
-## Features
+- title
+- date
+- (Optional) author
+- (Optional) category
+- (Optional) tags
 
-- [ ] RSS
-- [ ] PWA
-- [ ] Disqus
-- [ ] Email Subscription
-- [ ] Category
-- [ ] Tag
+## License
+
+MIT
