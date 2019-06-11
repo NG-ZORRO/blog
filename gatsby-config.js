@@ -7,6 +7,7 @@ module.exports = {
     social: {
       twitter: `NG_ZORRO`,
     },
+    defaultLangKey: 'zh-hans'
   },
   plugins: [
     {
@@ -33,6 +34,7 @@ module.exports = {
               maxWidth: 590,
             },
           },
+          'gatsby-remark-autolink-headers',
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
@@ -42,6 +44,12 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+            },
+          },
         ],
       },
     },

@@ -1,18 +1,18 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import get from 'lodash/get'
 
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
+import TranslationBox from '../components/translation-box/translation-box'
 
-/**
- * Blog homepage.
- */
-class BlogIndex extends React.Component {
+class BlogIndexTemplate extends React.Component {
   render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const langKey = this.props.pageContext.langKey
+
+    const posts = get(this, 'props.data.allMarkdownRemark.edges')
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -44,26 +44,30 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default BlogIndexTemplate
 
 export const pageQuery = graphql`
-  query {
+  query($langKey: String!) {
     site {
       siteMetadata {
         title
+        description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fields: { langKey: { eq: $langKey } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
-          excerpt
           fields {
             slug
+            langKey
           }
+          timeToRead
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            description
           }
         }
       }

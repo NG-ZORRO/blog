@@ -11,20 +11,31 @@ export default class Header extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      dark: false,
-    }
+    const dark = this.loadDarkModeAsIs()
+
+    this.state = { dark }
+    this.toggleDark(dark)
   }
 
   onToggleDarkMode = () => {
     const { dark } = this.state
 
-    this.setState({
-      dark: !dark,
-    })
+    this.setState({ dark: !dark })
+    this.storeDarkMode(!dark)
+    this.toggleDark(!dark)
+  }
 
-    document.body.classList.remove(dark ? 'dark' : 'light')
-    document.body.classList.add(dark ? 'light' : 'dark')
+  toggleDark = dark => {
+    document.body.classList.add(dark ? 'dark' : 'light')
+    document.body.classList.remove(dark ? 'light' : 'dark')
+  }
+
+  loadDarkModeAsIs = () => {
+    return localStorage.getItem('ng-zorro-blog.darkMode') === 'true';
+  }
+
+  storeDarkMode = dark => {
+    localStorage.setItem('ng-zorro-blog.darkMode', dark)
   }
 
   render() {

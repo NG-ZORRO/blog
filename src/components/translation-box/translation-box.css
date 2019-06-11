@@ -1,0 +1,13 @@
+.translated-hint {
+  margin-right: 4px;
+}
+
+.translation-box {
+  padding: 12px;
+  border: 1px solid var(--text-color);
+  border-radius: 12px;
+  background-color: transparent;
+  font-size: 14px;
+  color: var(--text-color);
+  transition: color 0.5s ease;
+}

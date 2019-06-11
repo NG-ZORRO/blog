@@ -5,4 +5,4 @@ description: 'Why we decided to build our own blog.'
 author: Wendell
 ---
 
-中文版
+English version.
