@@ -7,7 +7,6 @@
 
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
 
 import { rhythm } from '../utils/typography'
 
@@ -26,19 +25,12 @@ function Bio(props) {
               marginBottom: rhythm(2.5),
             }}
           >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            />
+            <img src="https://img.alicdn.com/tfs/TB1TFFaHAvoK1RjSZFwXXciCFXa-106-120.svg" alt={author} style={{
+              marginRight: rhythm(1 / 2),
+              marginBottom: 0,
+              minWidth: 50,
+              height: 64
+            }} />
             <p>
               {au
                 ? isMember
@@ -46,11 +38,11 @@ function Bio(props) {
                   : `Written by ${author}.`
                 : 'You are reading blogs published on NG-ZORRO Blog.'}{' '}
               <br />
-              <a href={`https://twitter.com/${social.twitter}`} target="_blank">
+              <a href={`https://twitter.com/${social.twitter}`} target="_blank" rel="noopener noreferrer">
                 Follow us on Twitter
               </a>
               {' • '}
-              <a href="https://github.com/NG-ZORRO" target="_blank">
+              <a href="https://github.com/NG-ZORRO" target="_blank" rel="noopener noreferrer">
                 View our homepage on GitHub
               </a>
             </p>
@@ -63,7 +55,7 @@ function Bio(props) {
 
 const bioQuery = graphql`
   query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+    avatar: file(absolutePath: { regex: "/logo.png/" }) {
       childImageSharp {
         fixed(width: 50, height: 50) {
           ...GatsbyImageSharpFixed

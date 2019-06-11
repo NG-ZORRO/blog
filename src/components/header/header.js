@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Switch, Menu, Icon, SubMenu } from 'antd'
+import { Row, Col, Switch } from 'antd'
 import { Link } from 'gatsby'
 
 import './header.css'

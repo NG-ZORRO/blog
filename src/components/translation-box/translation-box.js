@@ -34,7 +34,7 @@ class TranslationBox extends React.Component {
             <br />
             <br />
             <span>
-              <a href={originalDest} target="_blank">
+              <a href={originalDest} target="_blank" rel="noopener noreferrer">
                 Help us to translate it into a language that you are good with!
               </a>
             </span>
@@ -51,7 +51,7 @@ class TranslationBox extends React.Component {
         <span>
           <Link to={originalSlug}>See the original version in Chinese</Link>
           {' • '}
-          <a href={sourceCodeDest} target={'_blank'}>
+          <a href={sourceCodeDest} target={'_blank'} rel="noopener noreferrer">
             Help us to make this translation even better
           </a>
           {' • '}

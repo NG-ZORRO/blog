@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { graphql, Link } from 'gatsby'
 
 import Bio from '../components/bio'
@@ -10,73 +10,72 @@ import TranslationBox from '../components/translation-box/translation-box'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const {
-      defaultLangKey,
-      title: siteTitle,
-    } = this.props.data.site.siteMetadata
+    const { title: siteTitle } = this.props.data.site.siteMetadata
     const { previous, next, translations } = this.props.pageContext
     const { langKey, slug } = post.fields
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
-        <header style={{ marginBottom: rhythm(1) }}>
-          <h1
-            style={{
-              fontSize: '32px',
-              fontWeight: 700,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-              marginTop: rhythm(-0.5),
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
-
-          <TranslationBox
-            slug={slug}
-            langKey={langKey}
-            translations={translations}
+      <Fragment>
+        <Layout location={this.props.location} title={siteTitle}>
+          <SEO
+            title={post.frontmatter.title}
+            description={post.frontmatter.description || post.excerpt}
           />
-        </header>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr />
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-        <Bio />
-      </Layout>
+          <header style={{ marginBottom: rhythm(1) }}>
+            <h1
+              style={{
+                fontSize: '32px',
+                fontWeight: 700,
+              }}
+            >
+              {post.frontmatter.title}
+            </h1>
+            <p
+              style={{
+                ...scale(-1 / 5),
+                display: `block`,
+                marginBottom: rhythm(1),
+                marginTop: rhythm(-0.5),
+              }}
+            >
+              {post.frontmatter.date}
+            </p>
+
+            <TranslationBox
+              slug={slug}
+              langKey={langKey}
+              translations={translations}
+            />
+          </header>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <hr />
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li>
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+          <Bio />
+        </Layout>
+      </Fragment>
     )
   }
 }
