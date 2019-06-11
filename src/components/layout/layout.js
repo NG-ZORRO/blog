@@ -26,6 +26,8 @@ class Layout extends React.Component {
           <a href="https://twitter.com/NG_ZORRO">Twitter</a>
           {' • '}
           <a href="https://github.com/NG-ZORRO/blog">Blog Source Code</a>
+          {' • '}
+          <a href="https://ng.ant.design/blog/rss.xml">RSS</a>
         </footer>
       </div>
     )
