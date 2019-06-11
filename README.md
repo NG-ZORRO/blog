@@ -21,6 +21,7 @@ Follow these steps to write a new article:
 
 - title
 - date
+- (Optional) description
 - (Optional) author
 - (Optional) category
 - (Optional) tags
