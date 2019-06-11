@@ -20,7 +20,7 @@
 #header a#logo img#logo {
   vertical-align: middle;
   height: 32px;
-  margin: 0 16px 0;
+  margin: 0 16px 0 0;
 }
 
 #header a#logo span#name {
