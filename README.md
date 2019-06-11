@@ -25,6 +25,14 @@ Follow these steps to write a new article:
 - (Optional) category
 - (Optional) tags
 
+### Dark Mode
+
+Built-in Dark Mode.
+
+![](./screenshots/white.png)
+
+![](./screenshots/dark.png)
+
 ## License
 
 MIT
