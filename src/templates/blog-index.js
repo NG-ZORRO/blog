@@ -5,12 +5,10 @@ import get from 'lodash/get'
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
-import TranslationBox from '../components/translation-box/translation-box'
 
 class BlogIndexTemplate extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const langKey = this.props.pageContext.langKey
 
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
 
@@ -32,6 +30,9 @@ class BlogIndexTemplate extends React.Component {
               </h3>
               <small>{node.frontmatter.date}</small>
               <p
+                style={{
+                  marginTop: '1em'
+                }}
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
                 }}
@@ -68,6 +69,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            description
           }
         }
       }

@@ -45,8 +45,13 @@ function Bio(props) {
                   ? `Written by NG-ZORRO team member ${author}.`
                   : `Written by ${author}.`
                 : 'You are reading blogs published on NG-ZORRO Blog.'}{' '}
-              <a href={`https://twitter.com/${social.twitter}`}>
+              <br />
+              <a href={`https://twitter.com/${social.twitter}`} target="_blank">
                 Follow us on Twitter
+              </a>
+              {' • '}
+              <a href="https://github.com/NG-ZORRO" target="_blank">
+                View our homepage on GitHub
               </a>
             </p>
           </div>

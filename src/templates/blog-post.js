@@ -23,8 +23,15 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <header style={{marginBottom: rhythm(1)}}>
-          <h1>{post.frontmatter.title}</h1>
+        <header style={{ marginBottom: rhythm(1) }}>
+          <h1
+            style={{
+              fontSize: '32px',
+              fontWeight: 700,
+            }}
+          >
+            {post.frontmatter.title}
+          </h1>
           <p
             style={{
               ...scale(-1 / 5),
@@ -42,18 +49,8 @@ class BlogPostTemplate extends React.Component {
             translations={translations}
           />
         </header>
-
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-
-        <hr
-          style={{
-            marginTop: rhythm(1),
-            marginBottom: rhythm(1),
-          }}
-        />
-
-        <Bio />
-
+        <hr />
         <ul
           style={{
             display: `flex`,
@@ -78,6 +75,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+        <Bio />
       </Layout>
     )
   }

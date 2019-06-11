@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Switch } from 'antd'
+import { Row, Col, Switch, Menu, Icon, SubMenu } from 'antd'
 import { Link } from 'gatsby'
 
 import './header.css'
@@ -31,7 +31,7 @@ export default class Header extends React.Component {
   }
 
   loadDarkModeAsIs = () => {
-    return localStorage.getItem('ng-zorro-blog.darkMode') === 'true';
+    return localStorage.getItem('ng-zorro-blog.darkMode') === 'true'
   }
 
   storeDarkMode = dark => {

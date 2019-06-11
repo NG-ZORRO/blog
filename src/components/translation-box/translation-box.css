@@ -4,10 +4,9 @@
 
 .translation-box {
   padding: 12px;
-  border: 1px solid var(--text-color);
+  border: 1px solid #ffe58f;
   border-radius: 12px;
-  background-color: transparent;
+  background-color: #fffbe6;
   font-size: 14px;
-  color: var(--text-color);
   transition: color 0.5s ease;
 }
