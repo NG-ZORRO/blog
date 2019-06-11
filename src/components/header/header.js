@@ -4,6 +4,8 @@ import { Link } from 'gatsby'
 
 import './header.css'
 
+const windowGlobal = typeof window !== 'undefined' && window
+
 /**
  * The header component.
  */
@@ -26,16 +28,24 @@ export default class Header extends React.Component {
   }
 
   toggleDark = dark => {
-    document.body.classList.add(dark ? 'dark' : 'light')
-    document.body.classList.remove(dark ? 'light' : 'dark')
+    if (windowGlobal) {
+      windowGlobal.document.body.classList.add(dark ? 'dark' : 'light')
+      windowGlobal.document.body.classList.remove(dark ? 'light' : 'dark')
+    }
   }
 
   loadDarkModeAsIs = () => {
-    return localStorage.getItem('ng-zorro-blog.darkMode') === 'true'
+    if (windowGlobal) {
+      return windowGlobal.localStorage.getItem('ng-zorro-blog.darkMode') === 'true'
+    }
+
+    return false
   }
 
   storeDarkMode = dark => {
-    localStorage.setItem('ng-zorro-blog.darkMode', dark)
+    if (windowGlobal) {
+      return windowGlobal.localStorage.setItem('ng-zorro-blog.darkMode', dark)
+    }
   }
 
   render() {

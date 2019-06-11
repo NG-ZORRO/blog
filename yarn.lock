@@ -1881,12 +1881,7 @@ blob@0.0.5:
   resolved "https://registry.npm.taobao.org/blob/download/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
   integrity sha1-1oDu7yX4zZGtUz9bAe7UjmTK9oM=
 
-bluebird@^3.5.0, bluebird@^3.5.3:
-  version "3.5.5"
-  resolved "https://registry.npm.taobao.org/bluebird/download/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
-  integrity sha1-qNCv1zJR7/u9X+OEp31zADwXpx8=
-
-bluebird@^3.5.5:
+bluebird@^3.5.0, bluebird@^3.5.3, bluebird@^3.5.5:
   version "3.5.5"
   resolved "https://registry.npm.taobao.org/bluebird/download/bluebird-3.5.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fbluebird%2Fdownload%2Fbluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
   integrity sha1-qNCv1zJR7/u9X+OEp31zADwXpx8=
@@ -4953,6 +4948,14 @@ gatsby-link@^2.1.1:
     "@babel/runtime" "^7.0.0"
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
+
+gatsby-plugin-catch-links@^2.0.15:
+  version "2.0.15"
+  resolved "https://registry.npm.taobao.org/gatsby-plugin-catch-links/download/gatsby-plugin-catch-links-2.0.15.tgz#f7ebef483280f6c4fcc19f8fa317c18b49944a97"
+  integrity sha1-9+vvSDKA9sT8wZ+PoxfBi0mUSpc=
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    escape-string-regexp "^1.0.5"
 
 gatsby-plugin-feed@^2.2.2:
   version "2.2.2"

@@ -44,8 +44,16 @@ li {
   font-size: 16px;
 }
 
+li {
+  margin-bottom: 0;
+}
+
 h2 {
   margin-top: 28px;
+}
+
+:not(.post-container) > h3 {
+  margin-top: 36px;
 }
 
 .clearfix {
@@ -64,6 +72,10 @@ h2 {
 .post-container:hover {
   transform: translate3d(0, -5px, 1px);
   box-shadow: var(--box-shadow--highlight);
+}
+
+.post-container p {
+  margin-bottom: 0;
 }
 
 hr {

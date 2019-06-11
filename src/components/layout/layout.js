@@ -16,11 +16,17 @@ class Layout extends React.Component {
           padding: `0 ${rhythm(3 / 4)} ${rhythm(1.5)}`,
         }}
       >
-        <Header
-
-        />
+        <Header />
         <main>{children}</main>
-        <footer>© {new Date().getFullYear()}, NG-ZORRO Team with ❤️</footer>
+        <footer>
+          © {new Date().getFullYear()}, NG-ZORRO Team with ❤️
+          <br />
+          <a href="https://github.com/NG-ZORRO">GitHub</a>
+          {' • '}
+          <a href="https://twitter.com/NG_ZORRO">Twitter</a>
+          {' • '}
+          <a href="https://github.com/NG-ZORRO/blog">Blog Source Code</a>
+        </footer>
       </div>
     )
   }

@@ -41,10 +41,10 @@ function Bio(props) {
               <a href={`https://twitter.com/${social.twitter}`} target="_blank" rel="noopener noreferrer">
                 Follow us on Twitter
               </a>
-              {' • '}
-              <a href="https://github.com/NG-ZORRO" target="_blank" rel="noopener noreferrer">
-                View our homepage on GitHub
-              </a>
+              {/*{' • '}*/}
+              {/*<a href="https://github.com/NG-ZORRO" target="_blank" rel="noopener noreferrer">*/}
+              {/*  View our homepage on GitHub*/}
+              {/*</a>*/}
             </p>
           </div>
         )
