@@ -10,6 +10,7 @@
 #header a#logo {
   overflow: hidden;
   padding-left: 40px;
+  padding-right: 40px;
   float: left;
   height: 64px;
   line-height: 64px;
@@ -37,6 +38,15 @@
   margin-right: 40px;
 }
 
+#header #mobile-menu {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  z-index: 1;
+  color: var(--text-color);
+}
+
 @media only screen and (max-width: 767.99px) {
   #header {
     text-align: center;
@@ -45,4 +55,21 @@
   #header a#logo {
     float: initial;
   }
+
+  #header #mobile-menu {
+    display: block;
+  }
+}
+
+/* Override */
+.ant-popover-arrow {
+  border-top-color: var(--background-color) !important;
+  border-left-color: var(--background-color) !important;
+  transition: border-top-color 0.5s ease, border-left-color 0.5s ease;
+}
+
+.ant-popover-inner-content {
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }

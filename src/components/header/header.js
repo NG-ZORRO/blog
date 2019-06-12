@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Switch } from 'antd'
+import { Row, Col, Switch, Icon, Popover } from 'antd'
 import { Link } from 'gatsby'
 
 import './header.css'
@@ -36,7 +36,9 @@ export default class Header extends React.Component {
 
   loadDarkModeAsIs = () => {
     if (windowGlobal) {
-      return windowGlobal.localStorage.getItem('ng-zorro-blog.darkMode') === 'true'
+      return (
+        windowGlobal.localStorage.getItem('ng-zorro-blog.darkMode') === 'true'
+      )
     }
 
     return false
@@ -48,9 +50,19 @@ export default class Header extends React.Component {
     }
   }
 
-  render() {
-    const { dark } = this.state
+  renderSwitch = () => (
+    <Switch
+      id="dark-switch"
+      checked={this.state.dark}
+      checkedChildren={<Icon type="poweroff" />}
+      unCheckedChildren={<Icon type="bulb" />}
+      onChange={() => this.onToggleDarkMode()}
+    />
+  )
 
+  renderDropdownMenu = () => <div>{this.renderSwitch()}</div>
+
+  render() {
     return (
       <header id="header" className="clearfix">
         <Row>
@@ -65,12 +77,16 @@ export default class Header extends React.Component {
             </Link>
           </Col>
           <Col xs={0} sm={0} md={14} lg={14} xl={14} xxl={16}>
-            <Switch
-              id="dark-switch"
-              checked={dark}
-              onChange={() => this.onToggleDarkMode()}
-            />
+            {this.renderSwitch()}
           </Col>
+          <Popover
+            arrowPointAtCenter
+            content={this.renderDropdownMenu()}
+            placement="bottomRight"
+            trigger="click"
+          >
+            <Icon id="mobile-menu" type="menu" />
+          </Popover>
         </Row>
       </header>
     )
