@@ -93,7 +93,7 @@ module.exports = {
                   .replace(/,\s*\/static\//g, `,${siteUrl}/static/`)
 
                 return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.frontmatter.spoiler,
+                  description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
@@ -118,7 +118,7 @@ module.exports = {
                       frontmatter {
                         title
                         date
-                        spoiler
+                        description
                       }
                     }
                   }
