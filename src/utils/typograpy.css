@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono&display=swap');
-@import "./code.css";
+@import './code.css';
 
 body {
   --background-color: white;
@@ -40,8 +40,19 @@ footer {
 }
 
 p,
+.info-box
+{
+  margin: 14px 0;
+  font-size: 14px;
+  line-height: 28px;
+  color: var(--text-color);
+  transition: color 0.5s ease;
+}
+
+p,
 li {
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 28px;
 }
 
 li {
@@ -49,7 +60,13 @@ li {
 }
 
 h2 {
+  margin-top: 38px;
+  margin-bottom: 14px;
+}
+
+h3 {
   margin-top: 28px;
+  margin-bottom: 10px;
 }
 
 :not(.post-container) > h3 {
@@ -76,6 +93,21 @@ h2 {
 
 .post-container p {
   margin-bottom: 0;
+}
+
+.tag {
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.tag:hover {
+  opacity: 0.8;
+}
+
+.category-title,
+.tag-title {
+  line-height: 20px;
+  margin-right: 8px;
 }
 
 hr {

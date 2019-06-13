@@ -1,0 +1,20 @@
+.wrapper {
+  margin: 0 auto;
+  max-width: 60rem;
+}
+
+.side-bar > div {
+  float: right;
+  width: 240px;
+  max-width: 100%;
+  padding: 16px 32px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  transition: all 0.5s ease;
+}
+
+@media only screen and (max-width: 767.99px) {
+  .wrapper {
+    max-width: 40rem
+  }
+}

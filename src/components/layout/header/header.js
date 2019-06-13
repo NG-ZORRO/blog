@@ -1,9 +1,10 @@
 import React from 'react'
-import { Row, Col, Switch, Icon, Popover } from 'antd'
+import { Row, Col, Switch, Icon, Popover, Menu, List } from 'antd'
 import { Link } from 'gatsby'
-import { defaultLangKey } from '../../../i18n'
+import { defaultLangKey } from '../../../../i18n'
 
 import './header.css'
+import Navigation from '../navigation/navigation'
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -61,7 +62,16 @@ export default class Header extends React.Component {
     />
   )
 
-  renderDropdownMenu = () => <div>{this.renderSwitch()}</div>
+  renderDropdownMenu = () => (
+    <Navigation>
+      <List.Item>
+        <List.Item.Meta
+          title={<Icon type="bulb" />}
+        />
+        {this.renderSwitch()}
+      </List.Item>
+    </Navigation>
+  )
 
   render() {
     const { title, langKey } = this.props

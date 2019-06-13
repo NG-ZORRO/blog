@@ -35,6 +35,6 @@ Say good by to Medium.
 
 ---
 
-Please star our website `https://ng.ant.design/blog/`
+Please add our website `https://ng.ant.design/blog/` to your bookmarks!
 
 NG-ZORRO Team with ❤️

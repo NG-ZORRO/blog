@@ -6,6 +6,7 @@ author: Wendell <wendzhue@gmail.com>
 category: dev-blog
 tags:
   - carousel
+  - tutorial
 ---
 
 在之前的一次对轮播图 (carousel) 组件的重构中，我们将实现切换效果的代码和其他代码分离，这不仅使得组件更容易维护，而且允许用户为轮播图添加各种各样的切换效果 (strategy)。这篇文章将会以一个翻转 (flip) 效果为例，介绍如何使用该进阶功能。

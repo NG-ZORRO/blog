@@ -1,12 +1,4 @@
 .translated-hint {
+  color: rgb(51, 51, 51);
   margin-right: 4px;
-}
-
-.translation-box {
-  padding: 12px;
-  border: 1px solid #ffe58f;
-  border-radius: 12px;
-  background-color: #fffbe6;
-  font-size: 14px;
-  transition: color 0.5s ease;
 }

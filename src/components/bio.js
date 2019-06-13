@@ -25,26 +25,30 @@ function Bio(props) {
               marginBottom: rhythm(2.5),
             }}
           >
-            <img src="https://img.alicdn.com/tfs/TB1TFFaHAvoK1RjSZFwXXciCFXa-106-120.svg" alt={author} style={{
-              marginRight: rhythm(1 / 2),
-              marginBottom: 0,
-              minWidth: 50,
-              height: 64
-            }} />
-            <p>
+            <img
+              src="https://img.alicdn.com/tfs/TB1TFFaHAvoK1RjSZFwXXciCFXa-106-120.svg"
+              alt={author}
+              style={{
+                marginRight: rhythm(1 / 2),
+                marginBottom: 0,
+                minWidth: 50,
+                height: 64,
+              }}
+            />
+            <p style={{ marginTop: 0 }}>
               {au
                 ? isMember
                   ? `Written by NG-ZORRO team member ${author}.`
                   : `Written by ${author}.`
                 : 'You are reading blogs published on NG-ZORRO Blog.'}{' '}
               <br />
-              <a href={`https://twitter.com/${social.twitter}`} target="_blank" rel="noopener noreferrer">
+              <a
+                href={`https://twitter.com/${social.twitter}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Follow us on Twitter
               </a>
-              {/*{' • '}*/}
-              {/*<a href="https://github.com/NG-ZORRO" target="_blank" rel="noopener noreferrer">*/}
-              {/*  View our homepage on GitHub*/}
-              {/*</a>*/}
             </p>
           </div>
         )

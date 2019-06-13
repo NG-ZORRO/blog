@@ -1,12 +1,29 @@
 import React, { Fragment } from 'react'
 import { graphql, Link } from 'gatsby'
+import { Tag } from 'antd'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
-import { withLangPrefix } from '../../i18n'
-import { rhythm, scale } from '../utils/typography'
+import { getTranslator, withLangPrefix } from '../../i18n'
+import { rhythm } from '../utils/typography'
 import TranslationBox from '../components/translation-box/translation-box'
+
+const availableTagColors = [
+  'magenta',
+  'red',
+  'volcano',
+  'orange',
+  'gold',
+  'lime',
+  'green',
+  'cyan',
+  'blue',
+  'geekblue',
+  'purple',
+]
+
+const colorCounts = availableTagColors.length
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -15,15 +32,15 @@ class BlogPostTemplate extends React.Component {
     const { previous, next, translations } = this.props.pageContext
     const { langKey, slug } = post.fields
     const { category, tags } = post.frontmatter
+    const t = getTranslator(langKey)
 
     return (
-      <Fragment>
-        <Layout location={this.props.location} title={siteTitle}>
-          <SEO
-            title={post.frontmatter.title}
-            description={post.frontmatter.description || post.excerpt}
-          />
-
+      <Layout location={this.props.location} title={siteTitle}>
+        <SEO
+          title={post.frontmatter.title}
+          description={post.frontmatter.description || post.excerpt}
+        />
+        <article>
           <header style={{ marginBottom: rhythm(1) }}>
             <h1
               style={{
@@ -33,30 +50,28 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.title}
             </h1>
-            <p
-              style={{
-                ...scale(-1 / 5),
-                display: `block`,
-                marginBottom: rhythm(0.5),
-                marginTop: rhythm(-0.5),
-              }}
-            >
+            <div className="info-box">
               {post.frontmatter.date}
-            </p>
-            <p
-              style={{
-                ...scale(-1 / 5),
-                marginBottom: rhythm(1),
-              }}
-            >
-              Category:{' '}
+              <br />
+              <span className="category-title">Category</span>
               <Link to={withLangPrefix(langKey, `/categories/${category}`)}>
-                {category}
+                <Tag className="tag">{t(category)}</Tag>
               </Link>
               <br />
-              Tags: {tags}
-            </p>
-
+              <span className="tag-title">Tags</span>
+              {tags.map((tag, index) => (
+                <Link to={withLangPrefix(langKey, `/tags/${tag}`)}>
+                  <Tag
+                    className="tag"
+                    color={
+                      availableTagColors[(index + colorCounts) % colorCounts]
+                    }
+                  >
+                    {t(tag)}
+                  </Tag>
+                </Link>
+              ))}
+            </div>
             <TranslationBox
               slug={slug}
               langKey={langKey}
@@ -64,35 +79,35 @@ class BlogPostTemplate extends React.Component {
             />
           </header>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr />
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              marginLeft: 0,
-              marginBottom: 24,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-          <Bio />
-        </Layout>
-      </Fragment>
+        </article>
+        <hr />
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            marginLeft: 0,
+            marginBottom: 24,
+          }}
+        >
+          <li>
+            {previous && (
+              <Link to={previous.fields.slug} rel="prev">
+                ← {previous.frontmatter.title}
+              </Link>
+            )}
+          </li>
+          <li>
+            {next && (
+              <Link to={next.fields.slug} rel="next">
+                {next.frontmatter.title} →
+              </Link>
+            )}
+          </li>
+        </ul>
+        <Bio />
+      </Layout>
     )
   }
 }

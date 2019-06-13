@@ -1,7 +1,11 @@
 import React from 'react'
 
 import { rhythm } from '../../utils/typography'
-import Header from '../header/header'
+import Header from './header/header'
+import Navigation from './navigation/navigation'
+
+import './layout.css'
+import { Col, Row } from 'antd'
 
 class Layout extends React.Component {
   render() {
@@ -9,15 +13,21 @@ class Layout extends React.Component {
 
     return (
       <div
+        className="wrapper"
         style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(28),
           padding: `0 ${rhythm(3 / 4)} ${rhythm(1.5)}`,
         }}
       >
         <Header title={title} langKey={langKey} />
-        <main>{children}</main>
+        <Row gutter={48}>
+          <Col xs={0} sm={0} md={8} lg={8} xl={8} xxl={8} className="side-bar">
+            <Navigation />
+          </Col>
+          <Col xs={24} sm={24} md={16} lg={16} xl={16} xxl={16}>
+            <main>{children}</main>
+          </Col>
+        </Row>
+        {/* TODO: add sticky footer effect */}
         <footer>
           © {new Date().getFullYear()}, NG-ZORRO Team with ❤️
           <br />

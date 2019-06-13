@@ -1,0 +1,8 @@
+.navigation {
+  width: 180px;
+}
+
+.ant-list-item-meta-title {
+  color: var(--text-color);
+  transition: color 0.5s ease;
+}

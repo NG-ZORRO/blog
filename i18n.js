@@ -27,11 +27,13 @@ const categoryDict = {
 const tagDict = {
   en: {
     announcement: 'Announcement',
-    carousel: 'Carousel'
+    carousel: 'Carousel',
+    tutorial: 'Tutorial'
   },
   'zh-hans': {
     announcement: '公告',
-    carousel: 'Carousel'
+    carousel: 'Carousel',
+    tutorial: '教程'
   },
 }
 
@@ -49,5 +51,5 @@ module.exports = {
   supportedLanguages,
   defaultLangKey,
   withLangPrefix,
-  getCategoryOrTagNameInLang
+  getTranslator: getCategoryOrTagNameInLang
 }
