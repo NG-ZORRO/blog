@@ -3,7 +3,7 @@ title: NG-ZORRO Advanced - Customized Switching Strategy
 date: '2019-06-04T13:40:32.169Z'
 description: In a previous refactoring of the carousel component, we separated code that actually does switching animations with other code. This approach not only make the component maintainable, but also makes it possible for users to implement their own switching strategies. This article would take a flip strategy as an example to show you how to leverage this advanced feature.
 author: Wendell <wendzhue@gmail.com>
-category: Dev Blog
+category: dev-blog
 tags:
   - carousel
   - tutorial

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
+import { defaultLangKey, supportedLanguages } from '../../i18n'
 
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
@@ -9,12 +10,26 @@ import { rhythm } from '../utils/typography'
 class BlogIndexTemplate extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    const langKey = get(this, 'props.pageContext.langKey', defaultLangKey)
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
+      <Layout
+        location={this.props.location}
+        langKey={langKey}
+        title={
+          langKey === defaultLangKey
+            ? siteTitle
+            : `${siteTitle} - ${supportedLanguages[langKey]}`
+        }
+      >
+        <SEO
+          title={
+            langKey === defaultLangKey
+              ? 'All posts'
+              : `All posts in ${supportedLanguages[langKey]}`
+          }
+        />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
@@ -31,7 +46,7 @@ class BlogIndexTemplate extends React.Component {
               <small>{node.frontmatter.date}</small>
               <p
                 style={{
-                  marginTop: '1em'
+                  marginTop: '1em',
                 }}
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,

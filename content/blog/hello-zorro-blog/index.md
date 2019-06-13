@@ -3,10 +3,9 @@ title: NG-ZORRO 博客上线
 date: '2019-06-11T13:40:32.169Z'
 description: NG-ZORRO 博客上线了！我们在这篇文章中解释了我们迁移到自建博客上的原因。
 author: Wendell <wendzhue@gmail.com>
-category: Other
+category: other
 tags:
   - announcement
-  - hello
 ---
 
 **从即日起，我们将会以你正在阅读的[新博客](https://ng.ant.design/blog)作为主要的渠道，发布分享、开发日志和 release note 等。原先在[知乎专栏 NG-ZORRO 开发者博客](https://zhuanlan.zhihu.com/100000)以及 [Medium 专栏](https://medium.com/ng-zorro)上发布的文章将会逐渐迁移到新博客上。**

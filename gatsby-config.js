@@ -1,7 +1,7 @@
 module.exports = {
   pathPrefix: `/blog`,
   siteMetadata: {
-    title: `Blog of NG-ZORRO Team`,
+    title: `NG-ZORRO Blog`,
     author: `NG-ZORRO and Friends`,
     description: `Blog of NG-ZORRO team.`,
     siteUrl: `https://ng.ant.design/blog`,

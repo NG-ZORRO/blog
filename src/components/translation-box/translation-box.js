@@ -21,7 +21,7 @@ class TranslationBox extends React.Component {
               This article has been translated into these languages:
             </span>
             {translations.map(t => (
-              <span>
+              <span key={t}>
                 <Link to={`/${t}${slug}`}>{supportedLanguages[t]}</Link>
               </span>
             ))}

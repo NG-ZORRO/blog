@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col, Switch, Icon, Popover } from 'antd'
 import { Link } from 'gatsby'
+import { defaultLangKey } from '../../../i18n'
 
 import './header.css'
 
@@ -63,17 +64,28 @@ export default class Header extends React.Component {
   renderDropdownMenu = () => <div>{this.renderSwitch()}</div>
 
   render() {
+    const { title, langKey } = this.props
+
     return (
       <header id="header" className="clearfix">
         <Row>
           <Col xs={24} sm={24} md={10} lg={10} xl={10} xxl={8}>
-            <Link to={`/`} id="logo">
+            <Link
+              to={
+                langKey
+                  ? langKey !== defaultLangKey
+                    ? `/${langKey}`
+                    : `/`
+                  : '/'
+              }
+              id="logo"
+            >
               <img
                 id="logo"
                 alt="logo"
                 src="https://img.alicdn.com/tfs/TB1TFFaHAvoK1RjSZFwXXciCFXa-106-120.svg"
               />
-              <span id="name">NG-ZORRO BLOG</span>
+              <span id="name">{title || 'NG-ZORRO BLOG'}</span>
             </Link>
           </Col>
           <Col xs={0} sm={0} md={14} lg={14} xl={14} xxl={16}>

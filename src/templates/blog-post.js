@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby'
 import Bio from '../components/bio'
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
+import { withLangPrefix } from '../../i18n'
 import { rhythm, scale } from '../utils/typography'
 import TranslationBox from '../components/translation-box/translation-box'
 
@@ -13,6 +14,7 @@ class BlogPostTemplate extends React.Component {
     const { title: siteTitle } = this.props.data.site.siteMetadata
     const { previous, next, translations } = this.props.pageContext
     const { langKey, slug } = post.fields
+    const { category, tags } = post.frontmatter
 
     return (
       <Fragment>
@@ -21,6 +23,7 @@ class BlogPostTemplate extends React.Component {
             title={post.frontmatter.title}
             description={post.frontmatter.description || post.excerpt}
           />
+
           <header style={{ marginBottom: rhythm(1) }}>
             <h1
               style={{
@@ -34,11 +37,24 @@ class BlogPostTemplate extends React.Component {
               style={{
                 ...scale(-1 / 5),
                 display: `block`,
-                marginBottom: rhythm(1),
+                marginBottom: rhythm(0.5),
                 marginTop: rhythm(-0.5),
               }}
             >
               {post.frontmatter.date}
+            </p>
+            <p
+              style={{
+                ...scale(-1 / 5),
+                marginBottom: rhythm(1),
+              }}
+            >
+              Category:{' '}
+              <Link to={withLangPrefix(langKey, `/categories/${category}`)}>
+                {category}
+              </Link>
+              <br />
+              Tags: {tags}
             </p>
 
             <TranslationBox
@@ -100,6 +116,8 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        category
+        tags
       }
       fields {
         slug

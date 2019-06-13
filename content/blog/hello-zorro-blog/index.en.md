@@ -3,7 +3,7 @@ title: Hello NG-ZORRO Blog!
 date: '2019-06-11T13:40:32.169Z'
 description: NG-ZORRO Blog is online! In this article you will know why we decided to build our own blog.
 author: Wendell <wendzhue@gmail.com>
-category: Other
+category: other
 tags:
   - announcement
   - hello
