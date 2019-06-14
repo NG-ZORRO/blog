@@ -1,6 +1,26 @@
+div#___gatsby {
+  height: 100%;
+}
+
+div[role=group] {
+  height: 100%;
+}
+
 .wrapper {
+  position: relative;
+  box-sizing: border-box;
   margin: 0 auto;
+  padding: 0 30px 60px;
   max-width: 60rem;
+  min-height: 100%;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 24px;
+  margin: auto;
+  text-align: center;
 }
 
 .side-bar > div {
@@ -18,3 +38,4 @@
     max-width: 40rem
   }
 }
+

@@ -17,8 +17,8 @@ class TagIndexTemplate extends React.Component {
         langKey={langKey}
         title={
           langKey === defaultLangKey
-            ? `${siteTitle} | Categories`
-            : `${siteTitle} - ${supportedLanguages[langKey]} | Categories`
+            ? `${siteTitle}`
+            : `${siteTitle} - ${supportedLanguages[langKey]}`
         }
       >
         <SEO
@@ -28,21 +28,26 @@ class TagIndexTemplate extends React.Component {
               : `Categories in ${supportedLanguages[langKey]}`
           }
         />
-        <ul>
-          {tagNames.map(name => (
-            <li key={name}>
-              <Link
-                to={
-                  langKey === defaultLangKey
-                    ? `/tags/${name}`
-                    : `/${langKey}/tags/${name}`
-                }
-              >
-                {getTranslator(langKey)(name)}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <article>
+          <h1>
+            Tags
+          </h1>
+          <ul>
+            {tagNames.map(name => (
+              <li key={name}>
+                <Link
+                  to={
+                    langKey === defaultLangKey
+                      ? `/tags/${name}`
+                      : `/${langKey}/tags/${name}`
+                  }
+                >
+                  {getTranslator(langKey)(name)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </article>
       </Layout>
     )
   }
@@ -51,11 +56,11 @@ class TagIndexTemplate extends React.Component {
 export default TagIndexTemplate
 
 export const pageQuery = graphql`
-    query {
-        site {
-            siteMetadata {
-                title
-            }
-        }
+  query {
+    site {
+      siteMetadata {
+        title
+      }
     }
+  }
 `

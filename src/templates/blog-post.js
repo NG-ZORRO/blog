@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Tag } from 'antd'
 
@@ -43,10 +43,7 @@ class BlogPostTemplate extends React.Component {
         <article>
           <header style={{ marginBottom: rhythm(1) }}>
             <h1
-              style={{
-                fontSize: '32px',
-                fontWeight: 700,
-              }}
+
             >
               {post.frontmatter.title}
             </h1>

@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout/layout'
 import get from 'lodash/get'
-import { defaultLangKey, supportedLanguages } from '../../i18n'
+import { defaultLangKey, getTranslator, supportedLanguages } from '../../i18n'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
 
@@ -11,6 +11,8 @@ class CategoryPageTemplate extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
     const langKey = get(this, 'props.pageContext.langKey', defaultLangKey)
+    const categoryName = get(this, 'props.pageContext.categoryName')
+    const t = getTranslator(langKey)
 
     return (
       <Layout
@@ -29,31 +31,30 @@ class CategoryPageTemplate extends React.Component {
               : `All posts in ${supportedLanguages[langKey]}`
           }
         />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div className="post-container" key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                style={{
-                  marginTop: '1em',
-                }}
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </div>
-          )
-        })}
+        <article>
+          <h1>Category: {t(categoryName)}</h1>
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <div className="post-container" key={node.fields.slug}>
+                <h3>
+                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                    {title}
+                  </Link>
+                </h3>
+                <small>{node.frontmatter.date}</small>
+                <p
+                  style={{
+                    marginTop: '1em',
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                />
+              </div>
+            )
+          })}
+        </article>
       </Layout>
     )
   }

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono&display=swap');
+
 @import './code.css';
+
+html {
+  height: 100%;
+}
 
 body {
   --background-color: white;
@@ -9,7 +14,6 @@ body {
   --code-background-color: rgb(40, 44, 52);
   --hr-color: #999;
   --text-color: #333;
-
   background-color: var(--background-color);
   transition: background-color 0.5s ease;
 }
@@ -40,8 +44,7 @@ footer {
 }
 
 p,
-.info-box
-{
+.info-box {
   margin: 14px 0;
   font-size: 14px;
   line-height: 28px;
@@ -91,6 +94,10 @@ h3 {
   box-shadow: var(--box-shadow--highlight);
 }
 
+.post-container > h3 {
+  margin-top: 0;
+}
+
 .post-container p {
   margin-bottom: 0;
 }
@@ -111,16 +118,24 @@ h3 {
 }
 
 hr {
-  width: 60%;
   margin: 4em auto;
-  background-color: var(--hr-color);
+  width: 60%;
   height: 1px;
+  background-color: var(--hr-color);
 }
 
-footer {
-  text-align: center;
+blockquote {
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--hr-color);
 }
 
-ul {
+main > ul {
   margin-right: 1.45rem;
+}
+
+article h1 {
+  margin-bottom: 28px;
+  font-size: 32px;
+  font-weight: 700;
 }

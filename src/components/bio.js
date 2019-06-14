@@ -11,7 +11,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import { rhythm } from '../utils/typography'
 
 function Bio(props) {
-  const { isMember, au } = props
+  const { isMember } = props
 
   return (
     <StaticQuery
@@ -36,7 +36,7 @@ function Bio(props) {
               }}
             />
             <p style={{ marginTop: 0 }}>
-              {au
+              {author
                 ? isMember
                   ? `Written by NG-ZORRO team member ${author}.`
                   : `Written by ${author}.`
@@ -59,13 +59,6 @@ function Bio(props) {
 
 const bioQuery = graphql`
   query BioQuery {
-    avatar: file(absolutePath: { regex: "/logo.png/" }) {
-      childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     site {
       siteMetadata {
         author

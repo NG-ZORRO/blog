@@ -1,6 +1,7 @@
 import Typography from 'typography'
 
 import 'antd/dist/antd.css'
+
 import './typograpy.css'
 
 const typography = new Typography()

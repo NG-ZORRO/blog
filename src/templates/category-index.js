@@ -10,6 +10,7 @@ class CategoryIndexTemplate extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const categoryNames = get(this, 'props.pageContext.categoryNames')
     const langKey = get(this, 'props.pageContext.langKey', defaultLangKey)
+    const t = getTranslator(langKey)
 
     return (
       <Layout
@@ -17,8 +18,8 @@ class CategoryIndexTemplate extends React.Component {
         langKey={langKey}
         title={
           langKey === defaultLangKey
-            ? `${siteTitle} | Categories`
-            : `${siteTitle} - ${supportedLanguages[langKey]} | Categories`
+            ? `${siteTitle}`
+            : `${siteTitle} - ${supportedLanguages[langKey]}`
         }
       >
         <SEO
@@ -28,21 +29,24 @@ class CategoryIndexTemplate extends React.Component {
               : `Categories in ${supportedLanguages[langKey]}`
           }
         />
-        <ul>
-          {categoryNames.map(name => (
-            <li key={name}>
-              <Link
-                to={
-                  langKey === defaultLangKey
-                    ? `/categories/${name}`
-                    : `/${langKey}/categories/${name}`
-                }
-              >
-                {getTranslator(langKey)(name)}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <article>
+          <h1>Categories</h1>
+          <ul>
+            {categoryNames.map(name => (
+              <li key={name}>
+                <Link
+                  to={
+                    langKey === defaultLangKey
+                      ? `/categories/${name}`
+                      : `/${langKey}/categories/${name}`
+                  }
+                >
+                  {t(name)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </article>
       </Layout>
     )
   }
