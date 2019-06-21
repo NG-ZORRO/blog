@@ -4,7 +4,6 @@ import Layout from '../components/layout/layout'
 import get from 'lodash/get'
 import { defaultLangKey, getTranslator, supportedLanguages } from '../../i18n'
 import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
 
 class CategoryPageTemplate extends React.Component {
   render() {

@@ -5,7 +5,6 @@ import { defaultLangKey, supportedLanguages } from '../../i18n'
 
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
 
 class BlogIndexTemplate extends React.Component {
   render() {
