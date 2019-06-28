@@ -24,7 +24,7 @@ class Layout extends React.Component {
               xxl={6}
               className="side-bar"
             >
-              <Navigation style={{ marginTop: '-12px' }} />
+              <Navigation />
             </Col>
             <Col xs={24} sm={24} md={18} lg={18} xl={18} xxl={18}>
               <main>{children}</main>

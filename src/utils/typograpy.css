@@ -8,7 +8,7 @@ html {
 
 body {
   --content-background-color: white;
-  --background-color: #eee;
+  --background-color: rgb(246, 248, 250);
   --box-shadow: 0 2px 8px #f0f1f2;
   --box-shadow--highlight: 0 2px 16px #d1d2d3;
 
@@ -22,7 +22,7 @@ body {
 
 body.dark {
   --content-background-color: #1d232e;
-  --background-color: #2e394e;
+  --background-color: #1d232e;
   --box-shadow: 0 2px 8px #0a0b0c;
   --box-shadow--highlight: 0 2px 16px #0a0b0c;
   --code-background-color: white;
@@ -93,7 +93,6 @@ h3 {
 }
 
 .post-container:hover {
-  transform: translate3d(0, -5px, 1px);
   box-shadow: var(--box-shadow--highlight);
 }
 
