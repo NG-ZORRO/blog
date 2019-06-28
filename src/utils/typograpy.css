@@ -7,7 +7,8 @@ html {
 }
 
 body {
-  --background-color: white;
+  --content-background-color: white;
+  --background-color: #eee;
   --box-shadow: 0 2px 8px #f0f1f2;
   --box-shadow--highlight: 0 2px 16px #d1d2d3;
 
@@ -20,7 +21,8 @@ body {
 }
 
 body.dark {
-  --background-color: #1d232e;
+  --content-background-color: #1d232e;
+  --background-color: #2e394e;
   --box-shadow: 0 2px 8px #0a0b0c;
   --box-shadow--highlight: 0 2px 16px #0a0b0c;
   --code-background-color: white;

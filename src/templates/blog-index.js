@@ -30,11 +30,6 @@ class BlogIndexTemplate extends React.Component {
           }
         />
         <article>
-          <h1>
-            {langKey === defaultLangKey
-              ? 'All posts'
-              : `All posts in ${supportedLanguages[langKey]}`}
-          </h1>
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (

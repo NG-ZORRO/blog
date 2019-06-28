@@ -6,3 +6,7 @@
   color: var(--text-color);
   transition: color 0.5s ease;
 }
+
+.ant-list-item {
+  border-bottom: none !important;
+}

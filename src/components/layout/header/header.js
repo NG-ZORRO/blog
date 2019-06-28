@@ -76,30 +76,30 @@ export default class Header extends React.Component {
 
     return (
       <header id="header" className="clearfix">
-        <div className="header-wrapper">
+        <span id="logo">
+          <img
+            id="logo"
+            alt="logo"
+            src="https://img.alicdn.com/tfs/TB1TFFaHAvoK1RjSZFwXXciCFXa-106-120.svg"
+          />
           <Link
             to={
               langKey ? (langKey !== defaultLangKey ? `/${langKey}` : `/`) : '/'
             }
-            id="logo"
+            id="name"
           >
-            <img
-              id="logo"
-              alt="logo"
-              src="https://img.alicdn.com/tfs/TB1TFFaHAvoK1RjSZFwXXciCFXa-106-120.svg"
-            />
-            <span id="name">{title || 'NG-ZORRO BLOG'}</span>
+            {title || 'NG-ZORRO BLOG'}
           </Link>
-          {this.renderSwitch()}
-          <Popover
-            arrowPointAtCenter
-            content={this.renderDropdownMenu()}
-            placement="bottomRight"
-            trigger="click"
-          >
-            <Icon id="mobile-menu" type="menu" />
-          </Popover>
-        </div>
+        </span>
+        {this.renderSwitch()}
+        <Popover
+          arrowPointAtCenter
+          content={this.renderDropdownMenu()}
+          placement="bottomRight"
+          trigger="click"
+        >
+          <Icon id="mobile-menu" type="menu" />
+        </Popover>
       </header>
     )
   }
