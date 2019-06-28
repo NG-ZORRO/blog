@@ -52,7 +52,7 @@ pre[class*='language-'] ::selection {
   border-radius: 0.3em;
   color: var(--background-color);
   background: var(--code-background-color);
-  padding: 0.15em 0.4em 0.15em;
+  padding: 0.02em 0.4em 0.02em;
   white-space: normal;
   transition: background-color 0.5s ease;
 }
