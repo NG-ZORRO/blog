@@ -15,7 +15,6 @@ body {
   --hr-color: #999;
   --text-color: #333;
 
-  overflow-x: hidden;
   background-color: var(--background-color);
   transition: background-color 0.5s ease;
 }

@@ -1,18 +1,21 @@
 #header {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
   margin-bottom: 48px;
   box-shadow: var(--box-shadow);
   background-color: var(--background-color);
   transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
+#header .header-wrapper {
+  display: flex;
+  padding-bottom: 0;
+  height: 64px;
+  align-items: center;
+}
+
 #header a#logo {
   overflow: hidden;
-  padding-left: 30px;
-  padding-right: 30px;
-  float: left;
-  height: 64px;
+  flex-grow: 1;
+  height: 100%;
   line-height: 64px;
   text-decoration: none;
   white-space: nowrap;
@@ -32,10 +35,7 @@
 }
 
 #header #dark-switch {
-  float: right;
-  margin-top: 20px;
-  margin-left: 16px;
-  margin-right: 40px;
+  flex-grow: 0;
 }
 
 #header #mobile-menu {
@@ -58,6 +58,10 @@
 
   #header #mobile-menu {
     display: block;
+  }
+
+  #header #dark-switch {
+    display: none;
   }
 }
 

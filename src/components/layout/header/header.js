@@ -65,9 +65,7 @@ export default class Header extends React.Component {
   renderDropdownMenu = () => (
     <Navigation>
       <List.Item>
-        <List.Item.Meta
-          title={<Icon type="bulb" />}
-        />
+        <List.Item.Meta title={<Icon type="bulb" />} />
         {this.renderSwitch()}
       </List.Item>
     </Navigation>
@@ -78,29 +76,21 @@ export default class Header extends React.Component {
 
     return (
       <header id="header" className="clearfix">
-        <Row>
-          <Col xs={24} sm={24} md={10} lg={10} xl={10} xxl={8}>
-            <Link
-              to={
-                langKey
-                  ? langKey !== defaultLangKey
-                    ? `/${langKey}`
-                    : `/`
-                  : '/'
-              }
+        <div className="header-wrapper">
+          <Link
+            to={
+              langKey ? (langKey !== defaultLangKey ? `/${langKey}` : `/`) : '/'
+            }
+            id="logo"
+          >
+            <img
               id="logo"
-            >
-              <img
-                id="logo"
-                alt="logo"
-                src="https://img.alicdn.com/tfs/TB1TFFaHAvoK1RjSZFwXXciCFXa-106-120.svg"
-              />
-              <span id="name">{title || 'NG-ZORRO BLOG'}</span>
-            </Link>
-          </Col>
-          <Col xs={0} sm={0} md={14} lg={14} xl={14} xxl={16}>
-            {this.renderSwitch()}
-          </Col>
+              alt="logo"
+              src="https://img.alicdn.com/tfs/TB1TFFaHAvoK1RjSZFwXXciCFXa-106-120.svg"
+            />
+            <span id="name">{title || 'NG-ZORRO BLOG'}</span>
+          </Link>
+          {this.renderSwitch()}
           <Popover
             arrowPointAtCenter
             content={this.renderDropdownMenu()}
@@ -109,7 +99,7 @@ export default class Header extends React.Component {
           >
             <Icon id="mobile-menu" type="menu" />
           </Popover>
-        </Row>
+        </div>
       </header>
     )
   }
