@@ -141,3 +141,9 @@ article h1 {
   font-size: 32px;
   font-weight: 700;
 }
+
+article img {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

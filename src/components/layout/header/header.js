@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Switch, Icon, Popover, List } from 'antd'
+import { Switch, Icon, Popover, List } from 'antd'
 import { Link } from 'gatsby'
 import { defaultLangKey } from '../../../../i18n'
 
