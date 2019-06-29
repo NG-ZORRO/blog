@@ -5095,13 +5095,6 @@ gatsby-remark-images-medium-zoom@^1.2.1:
   dependencies:
     medium-zoom "^1.0.4"
 
-gatsby-remark-images-zoom@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images-zoom/-/gatsby-remark-images-zoom-1.1.0.tgz#8e42d463891cd0c84a4f70ec8df4b41965b22996"
-  integrity sha512-VYuSEH0tg3WJh8DpMKeMm5G/K6DDInA+tPySzdsakDLPDU1dh8VjCDg4q45Rdu1xcnICISn9tXCjOdQ3cryKCQ==
-  dependencies:
-    medium-zoom "^1.0.4"
-
 gatsby-remark-images@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.2.tgz#01f707ffa27bd2181c78da1aca51f0e32698c930"

@@ -42,11 +42,7 @@ class BlogPostTemplate extends React.Component {
         />
         <article>
           <header style={{ marginBottom: rhythm(1) }}>
-            <h1
-
-            >
-              {post.frontmatter.title}
-            </h1>
+            <h1>{post.frontmatter.title}</h1>
             <div className="info-box">
               {post.frontmatter.date}
               <br />
@@ -57,7 +53,7 @@ class BlogPostTemplate extends React.Component {
               <br />
               <span className="tag-title">Tags</span>
               {tags.map((tag, index) => (
-                <Link to={withLangPrefix(langKey, `/tags/${tag}`)}>
+                <Link to={withLangPrefix(langKey, `/tags/${tag}`)} key={tag}>
                   <Tag
                     className="tag"
                     color={

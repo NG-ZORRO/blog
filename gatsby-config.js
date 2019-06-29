@@ -35,6 +35,12 @@ module.exports = {
               linkImagesToOriginal: false,
             },
           },
+          {
+            resolve: `gatsby-remark-images-medium-zoom`, // point!
+            options: {
+              //...
+            },
+          },
           'gatsby-remark-autolink-headers',
           {
             resolve: `gatsby-remark-responsive-iframe`,
