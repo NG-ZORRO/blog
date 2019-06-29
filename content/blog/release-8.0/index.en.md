@@ -1,5 +1,5 @@
 ---
-title: ng-zorro-antd 8.0 released
+title: ng-zorro-antd 8.0.0 released
 date: '2019-06-29T17:29:18.169Z'
 description: Welcome to ng-zorro-antd 8.0.0. After upgrading to the latest version, developers can not only enjoy the latest version of Angular, but also get the latest features and better performance.
 author: YadongXie <vthinkxie@gmail.com>
