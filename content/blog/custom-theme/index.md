@@ -38,35 +38,42 @@ React 版本的 [Ant Design](https://ant.design/index-cn) 使用  [less-loader](
 2. 在根目录新建 webpack 配置文件 extra-webpack.config.js
 ``` javascript
 module.exports = {
-  module : {
-    rules: [
-      {test: /\.css$/,use : [ 'style-loader',  'css-loader'  ]},
-      {
-        test: /\.less$/,
-        use : [{
-            loader : 'less-loader',
-            options: {
-              modifyVars       : {  // 修改主题变量
-                'primary-color'     : 'red'
-              },
-              javascriptEnabled: true
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    "style-loader",
+                    "css-loader"
+                ]
+            },
+            {
+                test: /\.less$/,
+                use : [
+                    {
+                        loader : "less-loader",
+                        options: {
+                            modifyVars: {  // 修改主题变量
+                                "primary-color": "red"
+                            },
+                            javascriptEnabled: true
+                        }
+                    }
+                ]
             }
-          }]
-      }
-    ]
-  }
-  ...
+        ]
+    }
 }
 ```
 3.在 angular.json 中使用 @angular-builders/custom-webpack:browser
 ``` json
 "architect": {
-        "build": {
-          + "builder": "@angular-builders/custom-webpack:browser",
-          - "builder": "@angular-builders/build-angular:browser",
-          "options": {
+    "build": {
+        + "builder": "@angular-builders/custom-webpack:browser",
+        - "builder": "@angular-builders/build-angular:browser",
+        "options": {
             "customWebpackConfig": {
-              "path": "./extra-webpack.config.js"
+                "path": "./extra-webpack.config.js"
             },
             "outputPath": "dist/custom-webpack",
             "index": "src/index.html",
@@ -74,15 +81,18 @@ module.exports = {
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+                "src/favicon.ico",
+                "src/assets"
             ],
             "styles": [
-              "src/styles.less"
-            ],
-          },
-		  ...
+                "src/styles.less"
+            ]
+        }
+        ...
+    }
+}
 ```
+
 这样就可以实现 less 原理的主题定制了，当然 [custom-webpack](https://github.com/meltedspark/angular-builders/tree/master/packages/custom-webpack) 不仅仅可以做到 [less-loader](https://webpack.js.org/loaders/less-loader/) 的重写，它还可以利用 webpack 实现更多功能，具体研究我们在下一篇文章再来探讨；
 
 如果你想进一步了解在 angular cli 中自定义 webpack 打包的方案，可以参考这篇[文章](https://blog.angularindepth.com/customizing-angular-cli-build-an-alternative-to-ng-eject-v2-c655768b48cc)
@@ -94,9 +104,9 @@ module.exports = {
 
 如果开发者的项目未使用 Angular CLI，也可以通过同样的方式实现自己的 [webpack](https://webpack.js.org/) 打包器：
 
-1.在根目录添加 webpack.config.js 文件。
+1. 在根目录添加 webpack.config.js 文件。
 
-2.运行命令 webpack 或者 webpack-dev-serve，即可查看效果。
+2. 运行命令 webpack 或者 webpack-dev-serve，即可查看效果。
 
 笔者准备好了可以直接使用的源代码，方便大家查看
 [点击查看源码](https://github.com/chensimeng/angular-webpack-less)
@@ -140,16 +150,17 @@ import { Component } from '@angular/core';
 @Component({
   selector   : 'app-root',
   template: `
-<select (input)="setTheme($event.target.value)" title="theme" class="form-control">
-  <option value="">- select theme -</option>
-  <option>green</option>
-  <option>pink</option>
-</select>
-<app-trex [dtTheme]="themes"></app-trex>`,
+    <select (input)="setTheme($event.target.value)" title="theme" class="form-control">
+      <option value="">- select theme -</option>
+      <option>green</option>
+      <option>pink</option>
+    </select>
+    <app-trex [dtTheme]="themes"></app-trex>
+  `,
   styleUrls  : [ './app.component.less' ]
 })
 export class AppComponent {
-readonly themes = {
+  readonly themes = {
     'green': {
       'color-main'        : '#3D9D46',
       'color-main-darken' : '#338942',
@@ -179,17 +190,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'dt-trex',
   template: `
-<div class="class1">aaaa</div>
-<div class="class2">bbb</div>
-<div class="class3">ccc</div>
-<div class="class4">ddd</div>
-`,
+    <div class="class1">aaaa</div>
+    <div class="class2">bbb</div>
+    <div class="class3">ccc</div>
+    <div class="class4">ddd</div>
+  `,
   styles:`
-.class1{color:var(--color-main, #ff0000);}
-.class2{color:var(--color-main-darken);}
-.class3{color:var(--color-main-darken2);}
-.class4{color:var(--color-main-lighten);}
-`
+    .class1{color:var(--color-main, #ff0000);}
+    .class2{color:var(--color-main-darken);}
+    .class3{color:var(--color-main-darken2);}
+    .class4{color:var(--color-main-lighten);}
+  `
 })
 export class TrexComponent {
   constructor() { }
@@ -206,38 +217,43 @@ Angular 的组件默认工作在 [ViewEncapsulation.Emulated](https://angular.cn
 
 因此如果想实现主题定制，实际上是需要打多个 angular 的生成包，不过值得高兴的是 angular-cli 原生支持同时生成多个 package，我们可以配置 light 和 dark 变量文件，利用 angular-cli 的 builder 打多个主题包，然后利用路由切换不同的主题。
 
-> ViewEncapsulation.Emulated（默认）样式将被包装到 style 标签中，推送到 head 标签，并唯一标识，以便与组件的模板匹配，样式将仅用于同一组件中的模板。
-> ViewEncapsulation.ShadowDom  全局样式都不会影响后代组件
-> ViewEncapsulation.Native  已弃用
-> ViewEncapsulation.None  样式包裹在 style 标签中并推送到 head，紧跟在组件内联和外部样式之后，属于全局样式。
-通常我们都使用 Emulated 模式，如上所诉，样式将被包装到 style 标签中，推送到 head 标签，并唯一标识，以便与组件的模板匹配，这样，样式将仅用于同一组件中的模板。
+> * ViewEncapsulation.Emulated（默认）样式将被包装到 style 标签中，推送到 head 标签，并唯一标识，以便与组件的模板匹配，样式将仅用于同一组件中的模板。
+> * ViewEncapsulation.ShadowDom  全局样式都不会影响后代组件
+> * ViewEncapsulation.Native  已弃用
+> * ViewEncapsulation.None  样式包裹在 style 标签中并推送到 head，紧跟在组件内联和外部样式之后，属于全局样式。
 
 下面简单介绍一下这种方式的实现流程：
+
 1.配置全局样式 style.less
+
+注意：customize_theme 是文件夹名称，存放于 src/product-configurations/styles/（light|dark）下，利用 angular.json 中的 [stylePreprocessorOptions](https://angular.io/guide/workspace-config)（允许添加额外的基准路径，这些基准路径将被检查予以导入，Import ‘customize_theme’，可以成功导入，再也不用写很长的../../相对路径）
+
 ```css
- // customize_theme 是文件夹名称，存放于 src/product-configurations/styles/（light|dark）下，利用 angular.json 中的 stylePreprocessorOptions，引入 includePaths 下的样式文件；
 @import 'customize_theme'; 
 ```
+
 2.配置 angular.json
+
 注意：升级到 angular8.0 后，configurations 中的 key（如 ligth-theme）不能包含“:”（踩坑），原因[这里查看](https://github.com/angular/angular-cli/pull/14676/files)
 ```json
 "configurations": {
-            "light-theme": {
-              "stylePreprocessorOptions": {  // 允许您添加额外的基准路径，这些基准路径将被检查以导入，Import ‘customize_theme’，文件夹名称，也可以成功导入，不用写各种../../../相对路径
-                "includePaths": [
-                  "src/styles",
-                  "src/product-configurations/styles/light"
-                ]
-              }
-          },
-            "dark-theme": {
-                "stylePreprocessorOptions": { 
-                "includePaths": [
-                  "src/styles",
-                  "src/product-configurations/styles/dark"
-                ]
-              }
-            }
+    "light-theme": {
+        "stylePreprocessorOptions": {
+            "includePaths": [
+                "src/styles",
+                "src/product-configurations/styles/light"
+            ]
+        }
+    },
+    "dark-theme": {
+        "stylePreprocessorOptions": {
+            "includePaths": [
+                "src/styles",
+                "src/product-configurations/styles/dark"
+            ]
+        }
+    }
+    ...
 }
 ```
 3.配置 packge.json
@@ -249,12 +265,10 @@ Angular 的组件默认工作在 [ViewEncapsulation.Emulated](https://angular.cn
        "build:light": "ng build --project=app-build --configuration=light-theme"，
        "build:dark": "ng build --project=app-build --configuration=dark-theme"
   }
-  // ...
+  ...
 }
 ```
-这种方式缺点很明显，需要打包后切换不同语言包，打包时间翻倍，且需要路由来控制语言切换，每次切换语言都要重新加载，性能上比较浪费。
-
-既然如此，如何避免这些缺陷了？下面来介绍一种既简单又性能好的方式。
+这种方式缺点很明显，需要打包后切换不同语言包，打包时间翻倍，且需要路由来控制语言切换，每次切换语言都要重新加载，性能上比较浪费。既然如此，如何避免这些缺陷了？下面来介绍一种既简单又性能好的方式。
 
 ## 4. :host-context()
 
@@ -263,9 +277,10 @@ Angular 的组件默认工作在 [ViewEncapsulation.Emulated](https://angular.cn
 
 ``` css
 :host-context(.theme-light) h2{
-   // 基于当前组件，向上查找 .theme-light 样式，如果有，则应用到组件的 h2 中
+   // 基于当前组件向上查找 .theme-light，有则应用到组件的 h2 中
 }
 ```
+
 下面来介绍一下实现这种主题定制的流程：[点击查看源码](https://github.com/chensimeng/angular-theme-host-content)
 
 1.配置 angular.json，暴露两个主题文件
