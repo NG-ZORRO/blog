@@ -1,19 +1,33 @@
-# 漫谈 Angular 定制主题的四种方式
+---
+title: 漫谈 Angular 定制主题的四种方式
+date: '2019-07-04T11:29:18.169Z'
+description: 介绍一下 Angular 中实现主题定制的四种方式
+author: SiMengChen <chensimengsara@gmail.com>
+category: other
+tags:
+  - announcement
+---
+
+
 
 主题定制是提升用户体验最常见的一种，前端框架众多，主题定制方式却异曲同工，下面来介绍一下 Angular 中实现主题定制的四种方式。
 
 ## 1. webpack loader
 React 版本的 [Ant Design](https://ant.design/index-cn) 使用  [less-loader](https://webpack.js.org/loaders/less-loader/) 加载 globalVars 与 modifyVars 变量，并通过 less 的 render 方法传递 callback 到 loader 来实现的项目的主题修改功能。
+
 目前绝大部分的 angular 项目同样使用 webpack 打包方案。显然，相同的主题修改方案在 angular 中一样适用。
 
 ### webpack 打包 less
-[webpack](https://webpack.js.org/) 本身并不具备打包 less 文件的功能，最终实现该部分功能的是 [less-loader](https://webpack.js.org/loaders/less-loader/)，该加载器把 less 转为 CSS，在 webpack 中每个文件或模块都是有效的 JS 模块，因此我们还需要 [css-loader](https://webpack.js.org/loaders/css-loader/) 将CSS样式文件转换为变成 JS 模块。
-这时我们已经有了生成的 dist/style.js，在这个模块中只是将样式导出为字符串并存放于数组中，我们需要 [style-loader](https://webpack.js.org/loaders/style-loader/) 将该数组转换成 style 标签。最后我们还需要将 dist/style.js 自动导入 到 html 中，[html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/) 可以帮我们实现这部分功能。除了以上这些 loader，我们可能还需要 [autoprefixer](https://github.com/postcss/autoprefixer)、[cssnano](https://github.com/cssnano/cssnano) 和 [postcss-loader](https://github.com/postcss/postcss-loader) 等，有兴趣的同学可以自行了解。
+* [webpack](https://webpack.js.org/) 本身并不具备打包 less 文件的功能，最终实现该部分功能的是 [less-loader](https://webpack.js.org/loaders/less-loader/)，该加载器把 less 转为 CSS，在 webpack 中每个文件或模块都是有效的 JS 模块，因此我们还需要 [css-loader](https://webpack.js.org/loaders/css-loader/) 将CSS样式文件转换为变成 JS 模块。
+* 这时我们已经有了生成的 dist/style.js，在这个模块中只是将样式导出为字符串并存放于数组中，我们需要 [style-loader](https://webpack.js.org/loaders/style-loader/) 将该数组转换成 style 标签。
+* 最后我们还需要将 dist/style.js 自动导入 到 html 中，[html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/) 可以帮我们实现这部分功能。
+* 除了以上这些 loader，我们可能还需要 [autoprefixer](https://github.com/postcss/autoprefixer)、[cssnano](https://github.com/cssnano/cssnano) 和 [postcss-loader](https://github.com/postcss/postcss-loader) 等，有兴趣的同学可以自行了解。
 
 ### modifyVars
 上面介绍的 [less-loader](https://webpack.js.org/loaders/less-loader/) 可以帮忙我们实现主体定制，这里涉及到两个重要的配置：
-++globalVars++：相当于给每个 less 文件顶部增加一行 @VariableName: xx；
-++modifyVars++：相当于给每个 less 文件底部增加一行变量 @variable:xx；
+* globalVars：相当于给每个 less 文件顶部增加一行 @VariableName: xx；
+* modifyVars：相当于给每个 less 文件底部增加一行变量 @variable:xx；
+
 通过这两个配置，我们就可以把部分样式抽出变量，通过不同的变量组合成不同的主题。
 
 ###  custom-webpack
@@ -70,14 +84,18 @@ module.exports = {
 		  ...
 ```
 这样就可以实现 less 原理的主题定制了，当然 [custom-webpack](https://github.com/meltedspark/angular-builders/tree/master/packages/custom-webpack) 不仅仅可以做到 [less-loader](https://webpack.js.org/loaders/less-loader/) 的重写，它还可以利用 webpack 实现更多功能，具体研究我们在下一篇文章再来探讨；
-如果你想进一步了解在 angular cli 中自定义 webpack 打包的方案，可以参考 https://blog.angularindepth.com/customizing-angular-cli-build-an-alternative-to-ng-eject-v2-c655768b48cc
+
+如果你想进一步了解在 angular cli 中自定义 webpack 打包的方案，可以参考这篇[文章](https://blog.angularindepth.com/customizing-angular-cli-build-an-alternative-to-ng-eject-v2-c655768b48cc)
+
 笔者准备好了可以直接使用的源代码，方便大家查看
 [点击查看源码](https://github.com/chensimeng/angular-builder-less)
 
 ###  纯 webpack 打包
 
 如果开发者的项目未使用 Angular CLI，也可以通过同样的方式实现自己的 [webpack](https://webpack.js.org/) 打包器：
+
 1.在根目录添加 webpack.config.js 文件。
+
 2.运行命令 webpack 或者 webpack-dev-serve，即可查看效果。
 
 笔者准备好了可以直接使用的源代码，方便大家查看
@@ -97,6 +115,7 @@ CSS3 提供了 [Variable](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using
 ```
 
 有了以上的的基础知识，我们很容易想到如何在 angular 中实现基于 css Variable 的主题切换功能，我们只需要一个 Directive 可以根据 @Input 输入动态切换 style 即可。
+
 1.创建一个指令：ThemeDirective，用来给需要 CSS 变量的标签添加样式
 ```javascript
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
@@ -234,6 +253,7 @@ Angular 的组件默认工作在 [ViewEncapsulation.Emulated](https://angular.cn
 }
 ```
 这种方式缺点很明显，需要打包后切换不同语言包，打包时间翻倍，且需要路由来控制语言切换，每次切换语言都要重新加载，性能上比较浪费。
+
 既然如此，如何避免这些缺陷了？下面来介绍一种既简单又性能好的方式。
 
 ## 4. :host-context()
@@ -247,6 +267,7 @@ Angular 的组件默认工作在 [ViewEncapsulation.Emulated](https://angular.cn
 }
 ```
 下面来介绍一下实现这种主题定制的流程：[点击查看源码](https://github.com/chensimeng/angular-theme-host-content)
+
 1.配置 angular.json，暴露两个主题文件
 ```json
 "styles": [ "src/light.less","src/dark.less" ]
@@ -287,7 +308,9 @@ Angular 的组件默认工作在 [ViewEncapsulation.Emulated](https://angular.cn
 });
 ```
 5.在浏览器中给 body 添加 class='dark|light'，即可看到效果。
+
 以上方式可以实现 less 的主题动态切换，无需打包和设置路由，但是 :host-context() 和 :host 混用，会有些问题，具体可查看[这里](https://github.com/angular/angular/issues/14349)。
+
 其他组件中有主题概念，需要用 `themeMixin` 包起来使用，此外 `@html-selector` 变量可以实现两种主题共同存在，如果你需要的话。
 
 ## 对比以上四种方式
