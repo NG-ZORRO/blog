@@ -155,7 +155,7 @@ import { Component } from '@angular/core';
       <option>green</option>
       <option>pink</option>
     </select>
-    <app-trex [dtTheme]="themes"></app-trex>
+    <app-trex [dtTheme]="selectedTheme"></app-trex>
   `,
   styleUrls  : [ './app.component.less' ]
 })
