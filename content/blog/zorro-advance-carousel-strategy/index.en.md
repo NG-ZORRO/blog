@@ -43,7 +43,7 @@ When it's invoked, the first thing it needs to do is to invoke its parent class 
 super.withCarouselContents(contents)
 ```
 
-> [`NzCarouselBaseStrategy` provided util properties](https://github.com/NG-ZORRO/ng-zorro-antd/blob/d6906925187aef56b8c169bc644711d1919f1abf/components/carousel/strategies/base-strategy.ts%23L49-L59) that could help developers implement switching effect conveniently.
+> [`NzCarouselBaseStrategy` provided util properties](https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/carousel/strategies/base-strategy.ts) that could help developers implement switching effect conveniently.
 
 Then, it set styles of the slick list element and the slick track element. As of flip switching effect, all elements should be in the same position. So width of the slick list element should be `unitWidth`.
 
@@ -76,9 +76,9 @@ this.contents.forEach((content: NzCarouselContentDirective, i: number) => {
 })
 ```
 
-### [`switch`](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/f2ce7856b3f350b58d637b8ffde8a52e3aeeba72/src/app/flip-strategy.ts%23L54-L77)
+### [`switch`](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/fb5da19e330d3290bc55dc080f0847f35d932dd3/src/app/flip-strategy.ts#L54-L77)
 
-When the currently activated item changes, [the carousel component would call this method](https://github.com/NG-ZORRO/ng-zorro-antd/blob/d6906925187aef56b8c169bc644711d1919f1abf/components/carousel/nz-carousel.component.ts%23L219), and subscribe the Observable object it returns. So, a `Subject.asObservable()` is returned here, and it would `next` and `complete` when the switching animation is done.
+When the currently activated item changes, [the carousel component would call this method](https://github.com/NG-ZORRO/ng-zorro-antd/blob/c6e1439ffdaeddeabaa26b2c3463a9372cff8014/components/carousel/nz-carousel.component.ts#L256-L260), and subscribe the Observable object it returns. So, a `Subject.asObservable()` is returned here, and it would `next` and `complete` when the switching animation is done.
 
 ```ts
 const complete$ = new Subject<void>()
@@ -118,7 +118,7 @@ this.contents.forEach((content: NzCarouselContentDirective, i: number) => {
 
 So a flipping effect is completed! How simple is that?
 
-### [`dispose`](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/f2ce7856b3f350b58d637b8ffde8a52e3aeeba72/src/app/flip-strategy.ts%23L79-L87)
+### [`dispose`](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/fb5da19e330d3290bc55dc080f0847f35d932dd3/src/app/flip-strategy.ts#L79-L87)
 
 This method is relatively simple.
 
@@ -136,7 +136,7 @@ dispose(): void {
 
 ## Provide new Switching Strategy
 
-In app.module.ts we [provide custom switching strategy](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/f2ce7856b3f350b58d637b8ffde8a52e3aeeba72/src/app/app.module.ts%23L13-L19).
+In app.module.ts we [provide custom switching strategy](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/fb5da19e330d3290bc55dc080f0847f35d932dd3/src/app/app.module.ts#L12-L20).
 
 ```ts
 import { BrowserModule } from '@angular/platform-browser'
@@ -167,7 +167,7 @@ export class AppModule {}
 
 ## Use the new Switching Strategy
 
-The last step is just to [pass the `name` you defined in the previous step to `nzEffect` input](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/f2ce7856b3f350b58d637b8ffde8a52e3aeeba72/src/app/app.component.html%23L9).
+The last step is just to [pass the `name` you defined in the previous step to `nzEffect` input](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/fb5da19e330d3290bc55dc080f0847f35d932dd3/src/app/app.component.html#L9).
 
 ```html
 <nz-carousel [nzEffect]="'flip'" [nzDotRender]="dotTpl">

@@ -43,7 +43,7 @@ _注：需要 ng-zorro-antd 7.5.0 及以上版本。_
 super.withCarouselContents(contents)
 ```
 
-> [`NzCarouselBaseStrategy` 提供了一些辅助属性和方法](https://github.com/NG-ZORRO/ng-zorro-antd/blob/d6906925187aef56b8c169bc644711d1919f1abf/components/carousel/strategies/base-strategy.ts%23L49-L59)，能够帮助开发者更好地实现想要的切换效果。比如记录轮播图项目的宽度的 `unitWidth`，所有轮播图项目指令 `NzCarouselContentDirective` 的 `contents` 等。
+> [`NzCarouselBaseStrategy` 提供了一些辅助属性和方法](https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/carousel/strategies/base-strategy.ts)，能够帮助开发者更好地实现想要的切换效果。比如记录轮播图项目的宽度的 `unitWidth`，所有轮播图项目指令 `NzCarouselContentDirective` 的 `contents` 等。
 
 然后，对轮播图组件中的各个项目的样式做初始化。对于翻转效果来说，所有的元素都应该重合在相同的位置，所以外层元素的宽度均为轮播图项目的单位宽度。
 
@@ -78,9 +78,9 @@ this.contents.forEach((content: NzCarouselContentDirective, i: number) => {
 
 这样，初始化就完成了。
 
-### [`switch`](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/f2ce7856b3f350b58d637b8ffde8a52e3aeeba72/src/app/flip-strategy.ts%23L54-L77)
+### [`switch`](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/fb5da19e330d3290bc55dc080f0847f35d932dd3/src/app/flip-strategy.ts#L54-L77)
 
-在切换项目的时候，[轮播图组件会调用该方法](https://github.com/NG-ZORRO/ng-zorro-antd/blob/d6906925187aef56b8c169bc644711d1919f1abf/components/carousel/nz-carousel.component.ts%23L219)，并订阅该方法返回的 Observable 对象，以便在动画完成的时候做后处理。所以，我们返回一个 `Subject.asObservable()` 并在动画效果结束后 next 和 complete。
+在切换项目的时候，[轮播图组件会调用该方法](https://github.com/NG-ZORRO/ng-zorro-antd/blob/c6e1439ffdaeddeabaa26b2c3463a9372cff8014/components/carousel/nz-carousel.component.ts#L256-L260)，并订阅该方法返回的 Observable 对象，以便在动画完成的时候做后处理。所以，我们返回一个 `Subject.asObservable()` 并在动画效果结束后 next 和 complete。
 
 ```ts
 const complete$ = new Subject<void>()
@@ -118,7 +118,7 @@ this.contents.forEach((content: NzCarouselContentDirective, i: number) => {
 
 这样翻转效果就实现了，是不是非常简单？
 
-### [`dispose`](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/f2ce7856b3f350b58d637b8ffde8a52e3aeeba72/src/app/flip-strategy.ts%23L79-L87)
+### [`dispose`](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/fb5da19e330d3290bc55dc080f0847f35d932dd3/src/app/flip-strategy.ts#L79-L87)
 
 这个方法相对简单，把过渡效果去掉即可。
 
@@ -136,7 +136,7 @@ dispose(): void {
 
 ## 提供自定义的切换效果
 
-在 app.module.ts 中，[我们 provide 自定义的切换效果](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/f2ce7856b3f350b58d637b8ffde8a52e3aeeba72/src/app/app.module.ts%23L13-L19)。
+在 app.module.ts 中，[我们 provide 自定义的切换效果](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/fb5da19e330d3290bc55dc080f0847f35d932dd3/src/app/app.module.ts#L12-L20)。
 
 ```ts
 import { BrowserModule } from '@angular/platform-browser'
@@ -167,7 +167,7 @@ export class AppModule {}
 
 ## 指定轮播图组件使用该效果
 
-最后只需要像平常那样使用轮播图组件，[只不过指定效果的时候用之前 provide 的 name](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/f2ce7856b3f350b58d637b8ffde8a52e3aeeba72/src/app/app.component.html%23L9)，像下面这样：
+最后只需要像平常那样使用轮播图组件，[只不过指定效果的时候用之前 provide 的 name](https://github.com/wendzhue/flip-strategy-for-ng-zorro-antd/blob/fb5da19e330d3290bc55dc080f0847f35d932dd3/src/app/app.component.html#L9)，像下面这样：
 
 ```html
 <nz-carousel [nzEffect]="'flip'" [nzDotRender]="dotTpl">
