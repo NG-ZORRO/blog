@@ -28,12 +28,16 @@ const tagDict = {
   en: {
     announcement: 'Announcement',
     carousel: 'Carousel',
-    tutorial: 'Tutorial'
+    tutorial: 'Tutorial',
+    cli: 'CLI',
+    schematics: 'Schematics'
   },
   'zh-hans': {
     announcement: '公告',
     carousel: 'Carousel',
-    tutorial: '教程'
+    tutorial: '教程',
+    cli: 'CLI',
+    schematics: 'Schematics'
   },
 }
 
