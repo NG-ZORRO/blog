@@ -30,14 +30,18 @@ const tagDict = {
     carousel: 'Carousel',
     tutorial: 'Tutorial',
     cli: 'CLI',
-    schematics: 'Schematics'
+    schematics: 'Schematics',
+    typescript: 'Typescript',
+    websocket: 'Websocket'
   },
   'zh-hans': {
     announcement: '公告',
     carousel: 'Carousel',
     tutorial: '教程',
     cli: 'CLI',
-    schematics: 'Schematics'
+    schematics: 'Schematics',
+    typescript: 'Typescript',
+    websocket: 'Websocket'
   },
 }
 
