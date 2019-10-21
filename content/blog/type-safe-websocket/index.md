@@ -2,7 +2,7 @@
 title: 使用 Typescript 构建类型安全的 Websocket 应用
 description: 本文会通过一个简单的聊天室例子分享如何使用 Typescript 实现一个类型安全 Websocket 应用
 author: HsuanLee <hsuangm@gmail.com>
-date: 2019/6/6
+date: 2019-06-06
 category: dev-blog
 tags:
   - typescript

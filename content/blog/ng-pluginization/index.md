@@ -2,7 +2,7 @@
 title: 构建插件化的 Angular 应用
 description: 介绍如何在生产环境中动态加载外部 Angular 模块
 author: HsuanLee <hsuangm@gmail.com>
-date: 2019/7/31
+date: 2019-07-31
 category: dev-blog
 tags:
   - tutorial

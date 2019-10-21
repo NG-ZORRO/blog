@@ -2,7 +2,7 @@
 title: 使用 Schematics 自定义 ng generate
 description: 介绍 Angular6 新特性 Schematics
 author: HsuanLee <hsuangm@gmail.com>
-date: 2018/5/18
+date: 2018-05-18
 category: dev-blog
 tags:
   - tutorial
